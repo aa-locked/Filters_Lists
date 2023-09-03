@@ -1,0 +1,41 @@
+﻿@model TFAMtrlSubGrp
+<form method="post" class="row">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @*asp-validation-summary has 3 types 1) All 2)ModelOnly 3)None*@
+
+    <div class="form-floating py-2 col-12">
+        <select asp-for="FAMtrlGrpId" asp-items="ViewBag.GroupList" class="form-control border-0 shadow">
+            <option disabled selected value="-1">--Select--</option>
+        </select>
+        <label asp-for="FAMtrlGrpId" class="ms-2"></label>
+        <span asp-validation-for="FAMtrlGrpId" class="text-danger"></span>
+    </div>
+    <div class="form-floating py-2 col-12">
+        <input asp-for="SubGrpShortDesc" class="form-control border-0 shadow" />
+        <label asp-for="SubGrpShortDesc" class="ms-2"></label>
+        <span asp-validation-for="SubGrpShortDesc" class="text-danger"></span>
+    </div>
+    <div class="form-floating py-2 col-12">
+        <input asp-for="SubGrpDesc" class="form-control border-0 shadow" />
+        <label asp-for="SubGrpDesc" class="ms-2"></label>
+        <span asp-validation-for="SubGrpDesc" class="text-danger"></span>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-6 col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Create</button>
+        </div>
+        <div class="col-6 col-md-3">
+            <a asp-controller="MaterialGroup" asp-action="Index" class="btn btn-outline-primary form-control border">Back</a>
+        </div>
+    </div>
+</form>
+
+@*Section script added for partial view having JS only
+Section script is not added for normal script*@
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
